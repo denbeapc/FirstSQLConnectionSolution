@@ -1,0 +1,8 @@
+C:\repos\FirstSQLConnectionSolution\FirstSQLConnectionProject\bin\Debug\FirstSQLConnectionProject.exe.config
+C:\repos\FirstSQLConnectionSolution\FirstSQLConnectionProject\bin\Debug\FirstSQLConnectionProject.exe
+C:\repos\FirstSQLConnectionSolution\FirstSQLConnectionProject\bin\Debug\FirstSQLConnectionProject.pdb
+C:\repos\FirstSQLConnectionSolution\FirstSQLConnectionProject\obj\Debug\FirstSQLConnectionProject.csprojResolveAssemblyReference.cache
+C:\repos\FirstSQLConnectionSolution\FirstSQLConnectionProject\obj\Debug\FirstSQLConnectionProject.exe
+C:\repos\FirstSQLConnectionSolution\FirstSQLConnectionProject\obj\Debug\FirstSQLConnectionProject.pdb
+C:\repos\FirstSQLConnectionSolution\FirstSQLConnectionProject\bin\Debug\PrsLibrary.dll
+C:\repos\FirstSQLConnectionSolution\FirstSQLConnectionProject\bin\Debug\PrsLibrary.pdb

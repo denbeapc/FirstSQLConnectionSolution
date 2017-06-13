@@ -1,0 +1,5 @@
+C:\repos\FirstSQLConnectionSolution\PrsLibrary\bin\Debug\PrsLibrary.dll
+C:\repos\FirstSQLConnectionSolution\PrsLibrary\bin\Debug\PrsLibrary.pdb
+C:\repos\FirstSQLConnectionSolution\PrsLibrary\obj\Debug\PrsLibrary.csprojResolveAssemblyReference.cache
+C:\repos\FirstSQLConnectionSolution\PrsLibrary\obj\Debug\PrsLibrary.dll
+C:\repos\FirstSQLConnectionSolution\PrsLibrary\obj\Debug\PrsLibrary.pdb
