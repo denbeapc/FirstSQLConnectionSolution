@@ -25,7 +25,7 @@ namespace FirstSQLConnectionProject {
             // ============================ TEST COMMANDS ============================ //
 
             PurchaseRequest pr = PurchaseRequest.Select(4);
-            pr.AddLineItem(5, 2);
+            pr.UpdateLineItem(12, 2);
 
             // ============================ BREAK STATEMENT IF NOT DISPLAYING ============================ //
 

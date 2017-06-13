@@ -181,14 +181,13 @@ namespace PrsLibrary {
                 ProductId = ProductId,
                 Quantity = Quantity
             };
-
-            bool rc = LineItem.Insert(lineItem);
-            if (!rc)
+            
+            if (!LineItem.Insert(lineItem))
                 throw new ApplicationException("Insert of line item failed ... ");
-
-            this.Total += Quantity * product.Price;
-            rc = PurchaseRequest.Update(this);
+            
+            bool rc = PurchaseRequest.Update(this);
             UpdateLineItemsProperty();
+            RecalculateTotal();
             return rc;
         }
 
@@ -197,21 +196,18 @@ namespace PrsLibrary {
             if (lineItem == null) {
                 throw new ApplicationException("Line item to delete is not found ... ");
             }
-
-            decimal amount = lineItem.Product.Price * lineItem.Quantity;
-            bool rc = LineItem.Delete(lineItem);
-            if (!rc) {
+            
+            if (!LineItem.Delete(lineItem)) {
                 throw new ApplicationException("Line item delete failed ... ");
             }
-
-            this.Total -= amount;
-            rc = PurchaseRequest.Update(this);
-            if (!rc) {
+            
+            if (!PurchaseRequest.Update(this)) {
                 throw new ApplicationException("Purchase Request update failed ... ");
             }
 
             UpdateLineItemsProperty();
-            return rc;
+            RecalculateTotal();
+            return true;
         }
 
         public bool UpdateLineItem(int LineItemId, int NewQuantity) {
@@ -223,31 +219,28 @@ namespace PrsLibrary {
             if (NewQuantity < 0) {
                 throw new ApplicationException("New Quantity cannot be less then zero ... ");
             }
-
-            decimal oldAmount = lineItem.Product.Price * lineItem.Quantity;
+            
             lineItem.Quantity = NewQuantity;
-            decimal newAmount = lineItem.Product.Price * lineItem.Quantity;
-            decimal changeTotal = newAmount - oldAmount;
-
-            bool rc = LineItem.Update(lineItem);
-            if (!rc) {
+            if (!LineItem.Update(lineItem)) {
                 throw new ApplicationException("Line item update failed ... ");
             }
-
-            this.Total += changeTotal;
-            rc = PurchaseRequest.Update(this);
-            if (!rc) {
+            
+            if (!PurchaseRequest.Update(this)) {
                 throw new ApplicationException("Purchase Request update failed ... ");
             }
 
             UpdateLineItemsProperty();
-            return rc;
+            RecalculateTotal();
+            return true;
         }
 
-        private void CalculateTotal() {
-            this.Total = 0.0M;
-            foreach (LineItem x in LineItems) {
-                this.Total += (x.Quantity * x.Product.Price);
+        private void RecalculateTotal() {
+            LineItemCollection lineItems
+                = LineItem.Select($"PurchaseRequestId = {this.Id}", "Id");
+            var newTotal = lineItems.Sum(li => li.Product.Price * li.Quantity);
+            this.Total = newTotal;
+            if(!PurchaseRequest.Update(this)) {
+                throw new ApplicationException("Purchase Request has failed to update ... ");
             }
         }
     }
