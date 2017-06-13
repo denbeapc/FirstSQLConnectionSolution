@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PrsLibrary {
-    internal class LineItemCollection : List<LineItem> {
+    public class LineItemCollection : List<LineItem> {
     }
 }

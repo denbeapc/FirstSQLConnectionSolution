@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FirstSQLConnectionProject {
     public class Program {
-        public static void Main(string[] args) {
+        private void Run() {
             // Establishes a connection to the SQL database
             string ConnStr = @"Server=STUDENT05;Database=prs;Trusted_Connection=true;";
             SqlConnection Conn = new SqlConnection(ConnStr);
@@ -25,8 +25,7 @@ namespace FirstSQLConnectionProject {
             // ============================ TEST COMMANDS ============================ //
 
             PurchaseRequest pr = PurchaseRequest.Select(4);
-            pr.AddLineItem(1, 10);
-            pr.AddLineItem(2, 3);
+            pr.AddLineItem(5, 2);
 
             // ============================ BREAK STATEMENT IF NOT DISPLAYING ============================ //
 
@@ -75,7 +74,10 @@ namespace FirstSQLConnectionProject {
             // Finally, closes the SQL database connection
             Console.ReadKey();
             Conn.Close();
+        }
 
+        public static void Main(string[] args) {
+            (new Program()).Run();
         }
     }
 }

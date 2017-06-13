@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PrsLibrary {
-    internal class LineItem : PrsTable {
+    public class LineItem : PrsTable {
         public int Id { get; set; }
         public int PurchaseRequestId { get; set; }
         public PurchaseRequest PurchaseRequest { get; private set; }
@@ -90,7 +90,7 @@ namespace PrsLibrary {
                 LineItem lineItem = new LineItem();
                 lineItem.Id = id;
                 lineItem.PurchaseRequestId = purchaseRequestId;
-                lineItem.PurchaseRequest = PurchaseRequest.Select(purchaseRequestId);
+                // lineItem.PurchaseRequest = PurchaseRequest.Select(purchaseRequestId);
                 lineItem.ProductId = productId;
                 lineItem.Product = Product.Select(productId);
                 lineItem.Quantity = quantity;
