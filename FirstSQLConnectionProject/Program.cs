@@ -27,6 +27,8 @@ namespace FirstSQLConnectionProject {
             PurchaseRequest pr = PurchaseRequest.Select(4);
             pr.UpdateLineItem(12, 2);
 
+            // use linq syntax to total up all of purchase requests
+
             // ============================ BREAK STATEMENT IF NOT DISPLAYING ============================ //
 
             int i = 0;
